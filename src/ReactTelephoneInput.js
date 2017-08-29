@@ -210,7 +210,7 @@ export var ReactTelephoneInput = createReactClass({
             input.focus();
 
             if (isModernBrowser) {
-                var len = input.value.length;
+                var len = this.state.formattedText.length;
                 input.setSelectionRange(len, len);
             }
         }
@@ -398,7 +398,7 @@ export var ReactTelephoneInput = createReactClass({
     },
     _fillDialCode() {
         // if the input is blank, insert dial code of the selected country
-        if(this.props.inputRef.value === '+') {
+        if (this.state.formattedNumber === '+') {
             this.setState({formattedNumber: '+' + this.state.selectedCountry.dialCode});
         }
     },
