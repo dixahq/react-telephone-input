@@ -90,6 +90,7 @@ export var ReactTelephoneInput = createReactClass({
         disabled: PropTypes.bool,
         pattern: PropTypes.string,
         required: PropTypes.bool,
+        inputRef: PropTypes.string.isRequired
     },
     getDefaultProps() {
         return {
@@ -101,7 +102,7 @@ export var ReactTelephoneInput = createReactClass({
             onEnterKeyPress: function () {},
             preferredCountries: [],
             disabled: false,
-            placeholder: '+1 (702) 123-4567',
+            placeholder: '+1 (888) 910 7555',
             autoComplete: 'tel',
             required: false,
         };
@@ -202,7 +203,7 @@ export var ReactTelephoneInput = createReactClass({
 
     // put the cursor to the end of the input (usually after a focus event)
     _cursorToEnd(skipFocus) {
-        var input = this.refs.numberInput;
+        var input = this.props.inputRef;
         if (skipFocus) {
             this._fillDialCode();
         } else {
@@ -320,9 +321,9 @@ export var ReactTelephoneInput = createReactClass({
                     caretPosition = caretPosition - diff;
                 }
 
-                if(caretPosition > 0 && oldFormattedText.length >= formattedNumber.length) {
-                    this.refs.numberInput.setSelectionRange(caretPosition, caretPosition);
-                }
+                /*if(caretPosition > 0 && oldFormattedText.length >= formattedNumber.length) {
+                    this.props.numberInput.setSelectionRange(caretPosition, caretPosition);
+                }*/
             }
 
             if(this.props.onChange) {
@@ -397,7 +398,7 @@ export var ReactTelephoneInput = createReactClass({
     },
     _fillDialCode() {
         // if the input is blank, insert dial code of the selected country
-        if(this.refs.numberInput.value === '+') {
+        if(this.props.inputRef.value === '+') {
             this.setState({formattedNumber: '+' + this.state.selectedCountry.dialCode});
         }
     },
@@ -568,7 +569,7 @@ export var ReactTelephoneInput = createReactClass({
                     onBlur={this.handleInputBlur}
                     onKeyDown={this.handleInputKeyDown}
                     value={this.state.formattedNumber}
-                    ref="numberInput"
+                    ref={this.props.inputRef}
                     type="tel"
                     className={inputClasses}
                     autoComplete={this.props.autoComplete}

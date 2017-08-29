@@ -41,49 +41,58 @@ React.render(<ReactTelInput
 
 The component accepts other props to customize it -
 
-#### value and initialValue
+#### value and initialValue (string)
 Both the props have the same purpose - for setting the initial value of the input programatically.
 
-#### initialValue
+#### initialValue (string)
 See `value` above.
 
-#### autoFormat
+#### autoFormat (Boolean)
 `true` by default. Setting it to false will turn off all auto formatting.
 
-#### defaultCountry
+#### defaultCountry (string)
 The component selects the country code of a country by default. You can change it by passing the iso2 name of a country. E.g. for United States, set `defaultCountry` to 'us'.
 
-#### onlyCountries
+#### onlyCountries (Array)
 If you don't want all countries to be shown in the dropdown list, you can pass an array of country iso2 names to be shown in the dropdown list.
 
-#### preferredCountries
+#### preferredCountries (string)
 Preferred countries show up in the top of the list. This prop also accepts an array of country iso2 names.
-
 E.g.
 ```
 <ReactTelephoneInput
   preferredCountries={['in', 'us', 'uk']}
   />
 ```
-#### classNames
+
+#### inputRef (string) (required)
+  The ref string from the parent component.
+
+#### required (Boolean)
+  Is the field required.
+
+### autoComplete (Boolean)
+  Should the field be able to autoComplete from the browser.
+
+#### classNames (string)
 You can send in additional classes to be applied to the top container div of the component.
 
-#### onChange
+#### onChange (function)
 Function, which is called whenever there is a change of value in the input box.
 
-#### onEnterKeyPress
+#### onEnterKeyPress (function)
 Function, which is called when user presses the 'enter' key when the input box is in focus.
 
-#### onBlur
+#### onBlur (function)
 Function, which is called when the focus goes away from the input box.
 
-#### onFocus
+#### onFocus (function)
 Function, which is called when the input box gets the focus.
 
-#### disabled
+#### disabled (Boolean)
 Boolean value. When set to true, the input box is disabled and clicking on flag dropdown does nothing.
 
-#### pattern
+#### pattern (string)
 String. This is passed on to the input field and works like it should for any other input field.
 
 
