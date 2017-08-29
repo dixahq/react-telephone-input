@@ -90,7 +90,7 @@ export var ReactTelephoneInput = createReactClass({
         disabled: PropTypes.bool,
         pattern: PropTypes.string,
         required: PropTypes.bool,
-        inputRef: PropTypes.string.isRequired
+        inputRef: PropTypes.func.isRequired
     },
     getDefaultProps() {
         return {
